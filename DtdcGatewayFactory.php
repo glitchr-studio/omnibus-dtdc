@@ -6,7 +6,6 @@ use Omnibus\Config;
 use Omnibus\Dtdc\Action\CancelAction;
 use Omnibus\Dtdc\Action\ShippingAction;
 use Omnibus\Dtdc\Action\TrackingAction;
-use Omnibus\Exception\InvalidConfigException;
 use Omnibus\GatewayFactory;
 use Symfony\Component\HttpClient\HttpClient;
 
@@ -33,7 +32,7 @@ final class DtdcGatewayFactory extends GatewayFactory
             'tracking_password' => null,
             'sandbox' => false,
             'omnibus.api' => function (Config $c) {
-                $http = $this->http ?? (class_exists(HttpClient::class) ? HttpClient::create() : throw new InvalidConfigException('The "dtdc" gateway needs symfony/http-client.'));
+                $http = $this->http ?? HttpClient::create();
 
                 return new Api($http, (string) $c['api_key'], (string) $c['customer_code'], $c['tracking_username'] ?: null, $c['tracking_password'] ?: null, (bool) $c['sandbox']);
             },
