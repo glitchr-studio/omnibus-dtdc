@@ -37,4 +37,4 @@ login, come from DTDC's integration team (the demo environment first).
 Built from DTDC's published integration documentation and tested on recorded answers;
 **unverified** against the demo environment until an account's keys are at hand.
 
-License: LGPL-3.0-or-later.
+License: MIT since 2026-10-09; earlier versions remain published under LGPL-3.0-or-later.
